@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import RotatingSeal from "./RotatingSeal";
 import { hero } from "../lib/content";
 
 export default function Hero() {
@@ -28,21 +27,22 @@ export default function Hero() {
     <section
       ref={ref}
       onMouseMove={handleMouseMove}
-      className="relative min-h-[86vh] flex items-center justify-center overflow-hidden bg-ink-deep pt-24"
+      className="relative min-h-[86vh] flex items-center justify-center overflow-hidden bg-ink-deep pt-20"
     >
       {/* Background photo — the original hero image, subtly parallaxed */}
       <motion.div
-        className="absolute inset-0 scale-[1.06]"
+        className="absolute inset-0 scale-[1.02]"
         style={{ x: bgX, y: bgY }}
-        initial={{ scale: 1.14, opacity: 0 }}
-        animate={{ scale: 1.06, opacity: 1 }}
-        transition={{ duration: 1.6, ease: "easeOut" }}
+        initial={{ scale: 1.08, opacity: 0 }}
+        animate={{ scale: 1.02, opacity: 1 }}
+        transition={{ duration: 1.4, ease: "easeOut" }}
       >
         <img
           src={hero.image}
           alt=""
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-center contrast-[1.05] saturate-[1.1]"
           loading="eager"
+          style={{ imageRendering: "auto" }}
         />
       </motion.div>
 
@@ -60,13 +60,13 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto max-w-7xl w-full px-6 lg:px-10 py-40 grid lg:grid-cols-[1.15fr_0.85fr] gap-14 items-center justify-center">
-        <div className="flex flex-col justify-center">
+      <div className="relative mx-auto max-w-7xl w-full px-6 lg:px-10 py-36 flex items-center justify-center">
+        <div className="flex flex-col justify-center max-w-3xl text-center items-center mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex items-center gap-3 mb-6"
+            className="flex items-center justify-center gap-3 mb-6 w-full"
           >
             <span className="w-10 h-0.5 bg-accent-light" />
             <span className="font-mono text-xs tracking-[0.25em] uppercase text-accent-light">
@@ -78,7 +78,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.1 }}
-            className="font-display text-4xl sm:text-5xl lg:text-[3.5rem] leading-[1.08] font-medium text-white max-w-2xl text-balance"
+            className="font-display text-4xl sm:text-5xl lg:text-[3.5rem] leading-[1.08] font-light text-white max-w-2xl text-balance"
           >
             {hero.heading}
           </motion.h1>
@@ -103,21 +103,6 @@ export default function Hero() {
             </Link>
           </motion.div>
         </div>
-
-        {/* Small, subtle floating 3D trust badge — a professional accent,
-            not the focal point of the hero. */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
-          className="relative hidden lg:block h-64"
-        >
-          <div
-            className="absolute inset-0 rounded-full bg-accent/10 blur-3xl"
-            aria-hidden="true"
-          />
-          <RotatingSeal />
-        </motion.div>
       </div>
 
       {/* Scroll cue */}

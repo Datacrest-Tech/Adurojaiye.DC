@@ -1,23 +1,27 @@
-import { useEffect, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
-import { brand, navLinks, hero } from '../lib/content'
+import { useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { brand, navLinks, hero } from "../lib/content";
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const isRoot = location.pathname === "/";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
-    onScroll()
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-ink/95 backdrop-blur-md shadow-[0_1px_0_0_rgba(21,95,204,0.25)]' : 'bg-transparent'
+        !isRoot || scrolled
+          ? "bg-ink/95 backdrop-blur-md shadow-[0_1px_0_0_rgba(21,95,204,0.25)]"
+          : "bg-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between h-24">
@@ -28,14 +32,18 @@ export default function Navbar() {
               alt="Ajibade Durojaiye & Co."
               className="h-full w-auto max-w-[180px] object-contain"
               onError={(e) => {
-                e.currentTarget.onerror = null
-                e.currentTarget.src = '/logo.svg'
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = "/logo.svg";
               }}
             />
           </span>
           <span className="hidden sm:flex flex-col leading-tight">
-            <span className="font-display text-paper text-lg tracking-wide">{brand.name}</span>
-            <span className="font-mono text-[10px] tracking-[0.2em] text-accent-light uppercase">{brand.tagline}</span>
+            <span className="font-display text-paper text-lg tracking-wide">
+              {brand.name}
+            </span>
+            <span className="font-mono text-[10px] tracking-[0.2em] text-accent-light uppercase">
+              {brand.tagline}
+            </span>
           </span>
         </Link>
 
@@ -46,7 +54,7 @@ export default function Navbar() {
                 to={link.to}
                 className={({ isActive }) =>
                   `px-4 py-2 text-sm tracking-wide font-medium transition-colors ${
-                    isActive ? 'text-accent' : 'text-paper/85 hover:text-accent'
+                    isActive ? "text-accent" : "text-paper/85 hover:text-accent"
                   }`
                 }
               >
@@ -96,7 +104,7 @@ export default function Navbar() {
         {open && (
           <motion.nav
             initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
+            animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             className="lg:hidden bg-ink border-t border-accent/20 overflow-hidden"
           >
@@ -134,5 +142,5 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </header>
-  )
+  );
 }

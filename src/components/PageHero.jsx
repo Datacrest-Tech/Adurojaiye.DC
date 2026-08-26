@@ -1,36 +1,51 @@
-import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function PageHero({ heading, crumb }) {
+  const location = useLocation();
+  const isRoot = location.pathname === "/";
   return (
-    <section className="relative bg-ink pt-40 pb-20 overflow-hidden">
-      <div
-        className="absolute inset-0 bg-ledger-lines opacity-40 pointer-events-none"
-        aria-hidden="true"
-      />
-      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-accent/10 blur-3xl pointer-events-none" />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+    <section className={isRoot ? "bg-ink pt-24 pb-6" : "pt-32 pb-6"}>
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="font-mono text-xs tracking-[0.25em] uppercase text-accent/80 mb-4 flex items-center gap-2"
+          className={
+            isRoot
+              ? "mb-2 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-white/70"
+              : "mb-2 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-ink/70"
+          }
         >
-          <Link to="/" className="hover:text-accent">
+          <Link
+            to="/"
+            className={
+              isRoot
+                ? "transition-colors hover:text-accent-light"
+                : "transition-colors hover:text-accent-light text-ink/80"
+            }
+          >
             Home
           </Link>
           <span>/</span>
-          <span className="text-accent">{crumb || heading}</span>
+          <span className={isRoot ? "text-accent-light" : "text-ink/80"}>
+            {crumb || heading}
+          </span>
         </motion.p>
+
         <motion.h1
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className="font-display text-4xl sm:text-5xl font-medium text-paper leading-[1.05] max-w-2xl"
+          className={
+            isRoot
+              ? "inline-block bg-white text-ink rounded-md px-4 py-3 shadow-sm max-w-2xl font-display text-2xl font-medium leading-tight sm:text-3xl"
+              : "font-display text-ink text-2xl font-medium leading-tight sm:text-3xl"
+          }
         >
           {heading}
         </motion.h1>
       </div>
     </section>
-  )
+  );
 }
