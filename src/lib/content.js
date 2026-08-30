@@ -4,7 +4,7 @@
 export const brand = {
   name: "Ajibade Durojaiye & Co.",
   short: "ADC",
-  tagline: "Audit I Tax I Consulting I Advisory",
+  tagline: "",
   // Original logo asset from adurojaiye.com. Swap for a locally hosted copy
   // in /public (see README "Using the original logo") once you've saved it.
   logoUrl:

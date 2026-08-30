@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { hero } from "../lib/content";
+import { brand, hero } from "../lib/content";
 
 export default function Hero() {
   const ref = useRef(null);
@@ -60,8 +60,36 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto max-w-7xl w-full px-6 lg:px-10 py-44 flex items-center justify-center">
-        <div className="flex flex-col justify-center max-w-5xl text-center items-center mx-auto">
+      <div className="relative mx-auto max-w-7xl w-full px-6 lg:px-10 py-28 sm:py-32 lg:py-36 flex items-center justify-center">
+        <div className="flex flex-col justify-center max-w-5xl text-center items-center mx-auto -mt-8 sm:-mt-10 lg:-mt-12">
+          <motion.div
+            initial={{ opacity: 0, y: 18, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: [1, 1.04, 1] }}
+            transition={{
+              opacity: { duration: 0.7, delay: 0.08 },
+              y: { duration: 0.7, delay: 0.08 },
+              scale: {
+                duration: 4.2,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.6,
+              },
+            }}
+            className="mb-3 flex items-center justify-center"
+          >
+            <div className="rounded-2xl border border-white/30 bg-white/12 p-4 shadow-[0_28px_90px_-32px_rgba(0,0,0,0.8)] backdrop-blur-[2px]">
+              <img
+                src={brand.logoUrl}
+                alt="Ajibade Durojaiye & Co."
+                className="h-28 w-auto max-w-[360px] object-contain sm:h-32 lg:h-36"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = "/logo.svg";
+                }}
+              />
+            </div>
+          </motion.div>
+
           <motion.h1
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
@@ -110,7 +138,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50"
+        className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50"
       >
         <span className="font-mono text-[10px] tracking-[0.3em] uppercase">
           Scroll
