@@ -27,7 +27,7 @@ export default function Hero() {
     <section
       ref={ref}
       onMouseMove={handleMouseMove}
-      className="relative min-h-[86vh] flex items-center justify-center overflow-hidden bg-ink-deep pt-20"
+      className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-[#1b6ae1] pt-20 pb-12"
     >
       {/* Background photo — the original hero image, subtly parallaxed */}
       <motion.div
@@ -46,13 +46,13 @@ export default function Hero() {
         />
       </motion.div>
 
-      {/* Brand-blue overlay for legibility and a premium, on-brand tint */}
+      {/* Brand-blue overlay for legibility and premium on-brand tint */}
       <div
-        className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/50"
+        className="absolute inset-0 bg-gradient-to-r from-[#2a7ae8]/90 via-[#2d6ad0]/80 to-[#174eaf]/75"
         aria-hidden="true"
       />
       <div
-        className="absolute inset-0 bg-gradient-to-t from-ink-deep via-transparent to-ink/30"
+        className="absolute inset-0 bg-gradient-to-t from-[#184ea6]/80 via-transparent to-[#4a8ae8]/35"
         aria-hidden="true"
       />
       <div
@@ -60,28 +60,28 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto max-w-7xl w-full px-6 lg:px-10 py-36 flex items-center justify-center">
-        <div className="flex flex-col justify-center max-w-3xl text-center items-center mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center justify-center gap-3 mb-6 w-full"
-          >
-            <span className="w-10 h-0.5 bg-accent-light" />
-            <span className="font-mono text-xs tracking-[0.25em] uppercase text-accent-light">
-              {hero.eyebrow}
-            </span>
-          </motion.div>
-
+      <div className="relative mx-auto max-w-7xl w-full px-6 lg:px-10 py-44 flex items-center justify-center">
+        <div className="flex flex-col justify-center max-w-5xl text-center items-center mx-auto">
           <motion.h1
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.1 }}
-            className="font-display text-4xl sm:text-5xl lg:text-[3.5rem] leading-[1.08] font-light text-white max-w-2xl text-balance"
+            className="font-display text-4xl sm:text-5xl lg:text-[3.5rem] leading-[1.08] font-light text-white max-w-4xl text-balance"
           >
             {hero.heading}
           </motion.h1>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="flex items-center justify-center gap-3 mt-6 w-full"
+          >
+            <span className="w-10 h-0.5 bg-white/80" />
+            <span className="font-mono text-xs tracking-[0.25em] uppercase text-white">
+              {hero.eyebrow}
+            </span>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -91,7 +91,7 @@ export default function Hero() {
           >
             <Link
               to={hero.ctaPrimary.to}
-              className="inline-flex items-center gap-2 bg-white text-ink px-7 py-3.5 text-sm font-semibold tracking-wide shadow-[0_8px_30px_-8px_rgba(0,0,0,0.5)] hover:bg-accent-light hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 border border-white bg-transparent text-white px-7 py-3.5 text-sm font-semibold tracking-wide shadow-[0_8px_30px_-8px_rgba(0,0,0,0.5)] transition-transform duration-200 hover:scale-[1.04] hover:bg-white/10"
             >
               {hero.ctaPrimary.label}
             </Link>

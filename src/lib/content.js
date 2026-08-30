@@ -34,8 +34,7 @@ export const navLinks = [
 
 export const hero = {
   eyebrow: "Building Stronger Businesses for Tomorrow",
-  heading:
-    "ADC helps businesses grow sustainably, make smarter decisions, and achieve long-term success.",
+  heading: "ADC helps businesses like yours to achieve long-term success.",
   ctaPrimary: { label: "Book a Consultation", to: "/consult-us" },
   ctaSecondary: { label: "Explore our services", to: "/services" },
   image: "/Images/hero-background.jfif",
@@ -170,14 +169,24 @@ export const team = [
 ];
 
 export const clientSectors = [
-  "Construction",
-  "Financial Services – Insurance and Pension Funds",
-  "Maritime – Shipping",
-  "Oil Services",
-  "Health Management",
-  "Power",
-  "Security Management",
-  "Mining",
+  { name: "Construction", image: "/Images/construction.jfif" },
+  {
+    name: "Insurance and Pension Funds",
+    image: "/Images/Insurance%20and%20Pension%20Funds.jfif",
+  },
+  {
+    name: "Health Management",
+    image: "/Images/health%20management.jfif",
+  },
+  { name: "Oil Services", image: "/Images/oil%20services.jfif" },
+  { name: "Power", image: "/Images/power.jfif" },
+  {
+    name: "Security Management",
+    image: "/Images/security%20management.jfif",
+  },
+  { name: "Mining", image: "/Images/mining.jfif" },
+  // Keep the original sector copy and show the matched image for the client grid
+  { name: "Maritime – Shipping", image: "/Images/maritime.jfif" },
 ];
 
 export const clientsEyebrow = "Our Clients Testifies Results";

@@ -1,38 +1,47 @@
-import { Link } from 'react-router-dom'
-import { brand, navLinks } from '../lib/content'
+import { Link } from "react-router-dom";
+import { brand, navLinks } from "../lib/content";
 
-const socials = ['Facebook', 'LinkedIn', 'Twitter']
+const socials = ["Facebook", "LinkedIn", "Twitter"];
 
 export default function Footer() {
-  const flatLinks = navLinks.flatMap((l) => [l, ...(l.children || [])])
+  const flatLinks = navLinks.flatMap((l) => [l, ...(l.children || [])]);
 
   return (
-    <footer className="bg-ink-deep text-paper border-t border-accent/15">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="border-t border-accent/15 bg-ink-deep text-paper">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 sm:grid-cols-2 lg:grid-cols-4 lg:px-10">
         <div>
-          <div className="flex items-center gap-3 mb-4">
-            <span className="flex items-center h-12 px-2 py-1 bg-white rounded-md shadow-sm">
+          <div className="mb-4 flex items-center gap-3">
+            <span className="flex h-12 items-center rounded-md bg-white px-3 py-1 shadow-sm">
               <img
                 src={brand.logoUrl}
                 alt={brand.name}
-                className="h-full w-auto max-w-[140px] object-contain"
+                className="h-full max-w-[140px] w-auto object-contain"
                 onError={(e) => {
-                  e.currentTarget.onerror = null
-                  e.currentTarget.src = '/logo.svg'
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = "/logo.svg";
                 }}
               />
             </span>
-            <span className="font-display text-paper leading-tight">{brand.name}</span>
           </div>
-          <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent">{brand.tagline}</p>
+          <p className="font-display text-lg leading-tight text-paper">
+            {brand.name}
+          </p>
+          <p className="mt-3 font-mono text-[10px] tracking-[0.2em] uppercase text-accent">
+            {brand.tagline}
+          </p>
         </div>
 
         <div>
-          <h4 className="font-mono text-xs tracking-[0.25em] uppercase text-accent mb-5">Useful Links</h4>
+          <h4 className="mb-5 font-mono text-[10px] tracking-[0.25em] uppercase text-accent">
+            Useful Links
+          </h4>
           <ul className="space-y-2.5">
             {flatLinks.map((link) => (
               <li key={link.to}>
-                <Link to={link.to} className="text-sm text-paper/70 hover:text-accent transition-colors">
+                <Link
+                  to={link.to}
+                  className="text-sm text-paper/70 transition-colors hover:text-accent"
+                >
                   {link.label}
                 </Link>
               </li>
@@ -41,16 +50,24 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="font-mono text-xs tracking-[0.25em] uppercase text-accent mb-5">Contact Us</h4>
-          <p className="text-sm text-paper/70 leading-relaxed">
-            {brand.phones.join(', ')}
+          <h4 className="mb-5 font-mono text-[10px] tracking-[0.25em] uppercase text-accent">
+            Contact Us
+          </h4>
+          <p className="text-sm leading-relaxed text-paper/70">
+            {brand.phones.join(", ")}
             <br />
-            <a href={`mailto:${brand.email}`} className="hover:text-accent transition-colors">
+            <a
+              href={`mailto:${brand.email}`}
+              className="transition-colors hover:text-accent"
+            >
               {brand.email}
             </a>
           </p>
-          <h4 className="font-mono text-xs tracking-[0.25em] uppercase text-accent mt-6 mb-3">Address</h4>
-          <p className="text-sm text-paper/70 leading-relaxed">
+
+          <h4 className="mt-6 mb-3 font-mono text-[10px] tracking-[0.25em] uppercase text-accent">
+            Address
+          </h4>
+          <p className="text-sm leading-relaxed text-paper/70">
             {brand.address.map((line) => (
               <span key={line}>
                 {line}
@@ -61,14 +78,16 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="font-mono text-xs tracking-[0.25em] uppercase text-accent mb-5">Connect With Us</h4>
+          <h4 className="mb-5 font-mono text-[10px] tracking-[0.25em] uppercase text-accent">
+            Connect With Us
+          </h4>
           <ul className="flex gap-3">
             {socials.map((s) => (
               <li key={s}>
                 <a
                   href="#"
                   aria-label={s}
-                  className="w-9 h-9 flex items-center justify-center rounded-full border border-accent/30 text-accent text-xs font-mono hover:bg-accent hover:text-ink transition-colors"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-accent/30 text-xs font-mono text-accent transition-colors hover:bg-accent hover:text-ink"
                 >
                   {s[0]}
                 </a>
@@ -79,11 +98,14 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-accent/10">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-6 py-6 sm:flex-row lg:px-10">
           <p className="text-xs text-paper/50">{brand.copyright}</p>
-          <p className="text-xs text-paper/30 font-mono">Rebuilt in React by a Front-End Developer, content preserved from the original site</p>
+          <p className="text-xs font-mono text-paper/30">
+            Rebuilt in React by a Front-End Developer, content preserved from
+            the original site
+          </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }

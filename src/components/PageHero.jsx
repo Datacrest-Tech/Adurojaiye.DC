@@ -5,7 +5,7 @@ export default function PageHero({ heading, crumb }) {
   const location = useLocation();
   const isRoot = location.pathname === "/";
   return (
-    <section className={isRoot ? "bg-ink pt-24 pb-6" : "pt-32 pb-6"}>
+    <section className={isRoot ? "bg-ink mt-8 pt-48 pb-16" : "pt-32 pb-6"}>
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
@@ -39,7 +39,7 @@ export default function PageHero({ heading, crumb }) {
           transition={{ duration: 0.6, delay: 0.05 }}
           className={
             isRoot
-              ? "inline-block bg-white text-ink rounded-md px-4 py-3 shadow-sm max-w-2xl font-display text-2xl font-medium leading-tight sm:text-3xl"
+              ? "block bg-white text-ink rounded-md px-4 py-3 shadow-sm max-w-4xl mx-auto font-display text-2xl font-medium leading-tight sm:text-3xl"
               : "font-display text-ink text-2xl font-medium leading-tight sm:text-3xl"
           }
         >

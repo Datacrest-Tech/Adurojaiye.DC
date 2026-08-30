@@ -1,16 +1,16 @@
-import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import PageHero from '../components/PageHero'
-import SectionHeading from '../components/SectionHeading'
-import TeamCard from '../components/TeamCard'
-import CTASection from '../components/CTASection'
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import PageHero from "../components/PageHero";
+import SectionHeading from "../components/SectionHeading";
+import TeamCard from "../components/TeamCard";
+import CTASection from "../components/CTASection";
 import {
   aboutParagraphs,
   vision,
   coreValues,
   leadership,
   team,
-} from '../lib/content'
+} from "../lib/content";
 
 export default function AboutUs() {
   return (
@@ -38,22 +38,34 @@ export default function AboutUs() {
       </section>
 
       {/* Core values */}
-      <section className="relative bg-ink py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-ledger-lines opacity-30 pointer-events-none" aria-hidden="true" />
+      <section className="relative bg-[#2a7ae8] py-24 lg:py-32 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-ledger-lines opacity-30 pointer-events-none"
+          aria-hidden="true"
+        />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
-          <SectionHeading eyebrow="Our Core Values" heading="Business wisdom at your disposal" light align="center" />
+          <SectionHeading
+            eyebrow="Our Core Values"
+            heading="Business wisdom at your disposal"
+            light
+            align="center"
+          />
           <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-5 gap-px bg-accent/10">
             {coreValues.map((v, i) => (
               <motion.div
                 key={v.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
+                viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.07 }}
-                className="bg-ink p-7"
+                className="bg-[#1d5fc8]/40 p-7"
               >
-                <h3 className="font-display text-lg text-accent mb-3">{v.title}</h3>
-                <p className="text-sm text-paper/60 leading-relaxed">{v.body}</p>
+                <h3 className="font-display text-lg text-white mb-3">
+                  {v.title}
+                </h3>
+                <p className="text-sm text-white/80 leading-relaxed">
+                  {v.body}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -63,7 +75,10 @@ export default function AboutUs() {
       {/* Leadership */}
       <section className="bg-paper py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <SectionHeading eyebrow="Leadership" heading="A partner for every stage of business" />
+          <SectionHeading
+            eyebrow="Leadership"
+            heading="A partner for every stage of business"
+          />
           <div className="mt-14 grid sm:grid-cols-2 gap-6 lg:gap-8">
             {leadership.map((person, i) => (
               <TeamCard
@@ -105,9 +120,10 @@ export default function AboutUs() {
       </section>
 
       <CTASection
+        light
         heading="Ready to reach higher in business?"
         body={`For Financial management and much more – speak with us today.`}
       />
     </>
-  )
+  );
 }

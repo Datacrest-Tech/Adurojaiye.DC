@@ -20,7 +20,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         !isRoot || scrolled
-          ? "bg-ink/95 backdrop-blur-md shadow-[0_1px_0_0_rgba(21,95,204,0.25)]"
+          ? "bg-[#1b6ae1]/90 backdrop-blur-md"
           : "bg-transparent"
       }`}
     >
@@ -41,7 +41,7 @@ export default function Navbar() {
             <span className="font-display text-paper text-lg tracking-wide">
               {brand.name}
             </span>
-            <span className="font-mono text-[10px] tracking-[0.2em] text-accent-light uppercase">
+            <span className="font-mono text-[10px] tracking-[0.2em] text-white uppercase">
               {brand.tagline}
             </span>
           </span>
@@ -53,8 +53,8 @@ export default function Navbar() {
               <NavLink
                 to={link.to}
                 className={({ isActive }) =>
-                  `px-4 py-2 text-sm tracking-wide font-medium transition-colors ${
-                    isActive ? "text-accent" : "text-paper/85 hover:text-accent"
+                  `inline-flex px-4 py-2 text-sm tracking-wide font-medium text-white transition-transform duration-200 hover:scale-[1.04] ${
+                    isActive ? "scale-[1.04]" : ""
                   }`
                 }
               >
@@ -62,12 +62,12 @@ export default function Navbar() {
               </NavLink>
               {link.children && (
                 <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  <div className="bg-ink-light border border-accent/20 rounded-md shadow-xl min-w-[180px] py-2">
+                  <div className="bg-white border border-blue-200 rounded-md shadow-xl min-w-[180px] py-2">
                     {link.children.map((child) => (
                       <NavLink
                         key={child.to}
                         to={child.to}
-                        className="block px-4 py-2 text-sm text-paper/80 hover:text-accent hover:bg-ink/40 whitespace-nowrap"
+                        className="block px-4 py-2 text-sm text-accent hover:text-accent-dark hover:bg-blue-50 whitespace-nowrap"
                       >
                         {child.label}
                       </NavLink>
@@ -82,7 +82,7 @@ export default function Navbar() {
         <div className="hidden lg:block">
           <Link
             to={hero.ctaPrimary.to}
-            className="inline-flex items-center gap-2 border border-accent text-accent px-5 py-2.5 text-sm font-medium tracking-wide hover:bg-accent hover:text-ink transition-colors duration-300"
+            className="inline-flex items-center gap-2 border border-white bg-transparent text-white px-7 py-3.5 text-sm font-semibold tracking-wide shadow-[0_8px_30px_-8px_rgba(0,0,0,0.5)] transition-transform duration-200 hover:scale-[1.04] hover:bg-white/10"
           >
             {hero.ctaPrimary.label}
           </Link>
@@ -114,7 +114,7 @@ export default function Navbar() {
                   <NavLink
                     to={link.to}
                     onClick={() => setOpen(false)}
-                    className="block py-2.5 text-paper/90 hover:text-accent text-sm tracking-wide"
+                    className="block w-full text-center mt-2 inline-flex justify-center bg-white text-ink px-7 py-3.5 text-sm font-semibold tracking-wide shadow-[0_8px_30px_-8px_rgba(0,0,0,0.5)] hover:bg-accent-light hover:text-white transition-colors"
                   >
                     {link.label}
                   </NavLink>
@@ -133,7 +133,7 @@ export default function Navbar() {
               <Link
                 to={hero.ctaPrimary.to}
                 onClick={() => setOpen(false)}
-                className="mt-3 inline-flex justify-center border border-accent text-accent px-5 py-2.5 text-sm font-medium"
+                className="mt-3 inline-flex justify-center border border-white bg-transparent text-white px-5 py-2.5 text-sm font-medium"
               >
                 {hero.ctaPrimary.label}
               </Link>
