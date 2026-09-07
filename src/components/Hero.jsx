@@ -119,9 +119,14 @@ export default function Hero() {
           >
             <Link
               to={hero.ctaPrimary.to}
-              className="inline-flex items-center gap-2 border border-white bg-transparent text-white px-7 py-3.5 text-sm font-semibold tracking-wide shadow-[0_8px_30px_-8px_rgba(0,0,0,0.5)] transition-transform duration-200 hover:scale-[1.04] hover:bg-white/10"
+              className="group inline-flex items-center gap-0 border border-white bg-transparent text-white px-5 py-3.5 text-sm font-semibold tracking-wide shadow-[0_8px_30px_-8px_rgba(0,0,0,0.5)] transition-colors duration-200 hover:bg-white/10"
             >
-              {hero.ctaPrimary.label}
+              <span className="transition-all duration-300 group-hover:pr-2">
+                {hero.ctaPrimary.label}
+              </span>
+              <span className="inline-flex h-7 w-0 items-center justify-center overflow-hidden rounded-full border border-white/60 bg-white/10 text-base opacity-0 transition-all duration-300 group-hover:w-7 group-hover:opacity-100 group-hover:translate-x-1 group-hover:bg-white/15">
+                →
+              </span>
             </Link>
             <Link
               to={hero.ctaSecondary.to}

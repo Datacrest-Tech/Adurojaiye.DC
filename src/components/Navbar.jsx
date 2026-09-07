@@ -80,12 +80,23 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden lg:block">
-          <Link
-            to={hero.ctaPrimary.to}
-            className="inline-flex items-center gap-2 border border-white bg-transparent text-white px-7 py-3.5 text-sm font-semibold tracking-wide shadow-[0_8px_30px_-8px_rgba(0,0,0,0.5)] transition-transform duration-200 hover:scale-[1.04] hover:bg-white/10"
+          <motion.div
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-block"
           >
-            {hero.ctaPrimary.label}
-          </Link>
+            <Link
+              to={hero.ctaPrimary.to}
+              className="group inline-flex items-center gap-0 border border-white bg-transparent text-white px-5 py-3 text-sm font-semibold tracking-wide shadow-[0_8px_30px_-8px_rgba(0,0,0,0.5)] transition-colors duration-200 hover:bg-white/10"
+            >
+              <span className="transition-all duration-300 group-hover:pr-2">
+                {hero.ctaPrimary.label}
+              </span>
+              <span className="inline-flex h-7 w-0 items-center justify-center overflow-hidden rounded-full border border-white/60 bg-white/10 text-base opacity-0 transition-all duration-300 group-hover:w-7 group-hover:opacity-100 group-hover:translate-x-1 group-hover:bg-white/15">
+                →
+              </span>
+            </Link>
+          </motion.div>
         </div>
 
         <button
