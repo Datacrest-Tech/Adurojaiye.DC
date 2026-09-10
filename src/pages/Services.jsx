@@ -1,5 +1,4 @@
 import PageHero from "../components/PageHero";
-import ServiceCard from "../components/ServiceCard";
 import CTASection from "../components/CTASection";
 import SectionHeading from "../components/SectionHeading";
 import { services, consultPage } from "../lib/content";
@@ -27,25 +26,6 @@ export default function Services() {
                 context.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Core services grid */}
-      <section className="bg-paper py-8 lg:py-12">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <SectionHeading eyebrow="Core Services" heading="What we do" />
-          <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-2 gap-6 lg:gap-8">
-            {services.map((s, i) => (
-              <ServiceCard
-                key={s.slug}
-                index={i}
-                title={s.title}
-                description={s.description}
-                tags={s.tags}
-                slug={s.slug}
-              />
-            ))}
           </div>
         </div>
       </section>
