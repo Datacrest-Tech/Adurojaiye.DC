@@ -39,6 +39,104 @@
   }
 }
 
+@layer utilities {
+  @keyframes logo-zoom {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.02);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .logo-zoom {
+    transform-origin: center;
+    animation: logo-zoom 6s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-zoom {
+      animation: none !important;
+    }
+  }
+}
+
+@layer utilities {
+  .logo-offset {
+    transform: translateX(0%);
+  }
+
+  @media (min-width: 1024px) {
+    .logo-offset {
+      transform: translateX(-6%);
+      transition: transform 360ms ease-out;
+    }
+  }
+}
+
+/* Premium logo stage: soft radial sheen + faint geometric texture + gentle shadow */
+@layer components {
+  .logo-stage {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    isolation: isolate;
+  }
+
+  .logo-stage::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 260px;
+    height: 260px;
+    border-radius: 9999px;
+    background: radial-gradient(
+      closest-side,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.02) 40%,
+      transparent 65%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .logo-stage::after {
+    /* very faint geometric pattern (subtle grid) */
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    height: 320px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><g fill='none' stroke='%23000000' stroke-opacity='0.06' stroke-width='0.5'><path d='M0 20 L160 20 M0 40 L160 40 M0 60 L160 60 M0 80 L160 80 M0 100 L160 100 M0 120 L160 120 M0 140 L160 140 M20 0 L20 160 M40 0 L40 160 M60 0 L60 160 M80 0 L80 160 M100 0 L100 160 M120 0 L120 160 M140 0 L140 160'/></g></svg>");
+    background-repeat: repeat;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .logo-stage img {
+    position: relative;
+    z-index: 10;
+    filter: drop-shadow(0 14px 36px rgba(0, 0, 0, 0.12));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-stage::before,
+    .logo-stage::after {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

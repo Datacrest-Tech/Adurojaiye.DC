@@ -15,6 +15,8 @@ export default function Footer() {
               <img
                 src={brand.logoUrl}
                 alt={brand.name}
+                loading="lazy"
+                decoding="async"
                 className="h-full max-w-[140px] w-auto object-contain"
                 onError={(e) => {
                   e.currentTarget.onerror = null;

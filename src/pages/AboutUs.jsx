@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import PageHero from "../components/PageHero";
 import SectionHeading from "../components/SectionHeading";
@@ -13,24 +14,48 @@ import {
 } from "../lib/content";
 
 export default function AboutUs() {
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <>
       <PageHero heading="About Us" />
 
-      <section className="bg-paper py-24 lg:py-28">
-        <div className="mx-auto max-w-3xl px-6 space-y-5">
-          {aboutParagraphs.map((p) => (
-            <p key={p.slice(0, 24)} className="text-ink/65 leading-relaxed">
-              {p}
-            </p>
-          ))}
+      <section className="bg-paper py-12 lg:py-16">
+        <div className="mx-auto max-w-3xl px-6 space-y-4">
+          {/* Show a preview and allow expanding to reveal the full about copy */}
+          <p className="text-ink/65 leading-relaxed">{aboutParagraphs[0]}</p>
+
+          {expanded ? (
+            aboutParagraphs.slice(1).map((p) => (
+              <p key={p.slice(0, 24)} className="text-ink/65 leading-relaxed">
+                {p}
+              </p>
+            ))
+          ) : (
+            <button
+              onClick={() => setExpanded(true)}
+              className="mt-2 inline-block text-accent font-medium hover:underline"
+              aria-expanded={expanded}
+            >
+              Read more
+            </button>
+          )}
+
+          {expanded && (
+            <button
+              onClick={() => setExpanded(false)}
+              className="mt-2 inline-block text-sm text-ink/70 hover:text-ink"
+            >
+              Show less
+            </button>
+          )}
 
           <motion.blockquote
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mt-10 border-l-2 border-accent pl-6 py-1 font-display text-xl sm:text-2xl leading-snug text-ink"
+            className="mt-6 border-l-2 border-accent pl-6 py-1 font-display text-xl sm:text-2xl leading-snug text-ink"
           >
             &ldquo;{vision.quote}&rdquo;
           </motion.blockquote>

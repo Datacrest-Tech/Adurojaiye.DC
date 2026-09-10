@@ -19,17 +19,17 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        !isRoot || scrolled
-          ? "bg-[#1b6ae1]/90 backdrop-blur-md"
-          : "bg-transparent"
+        !isRoot || scrolled ? "bg-paper/95 shadow-sm" : "bg-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between h-24">
         <Link to="/" className="flex items-center gap-3 group shrink-0">
-          <span className="flex items-center h-14 sm:h-16 px-2.5 py-1.5 bg-white rounded-md shadow-[0_4px_18px_-4px_rgba(0,0,0,0.35)] ring-1 ring-black/5 transition-transform duration-500 group-hover:scale-[1.03]">
+          <span className="flex items-center h-14 sm:h-16 px-2.5 py-1.5 bg-paper rounded-md shadow-[0_4px_18px_-4px_rgba(0,0,0,0.06)] ring-1 ring-black/4 transition-transform duration-500 group-hover:scale-[1.03]">
             <img
               src={brand.logoUrl}
               alt="Ajibade Durojaiye & Co."
+              loading="eager"
+              decoding="async"
               className="h-full w-auto max-w-[180px] object-contain"
               onError={(e) => {
                 e.currentTarget.onerror = null;
@@ -38,43 +38,28 @@ export default function Navbar() {
             />
           </span>
           <span className="hidden sm:flex flex-col leading-tight">
-            <span className="font-display text-paper text-lg tracking-wide">
+            <span className="font-display text-ink text-lg tracking-wide">
               {brand.name}
             </span>
-            <span className="font-mono text-[10px] tracking-[0.2em] text-white uppercase">
+            <span className="font-mono text-[10px] tracking-[0.2em] text-ink/60 uppercase">
               {brand.tagline}
             </span>
           </span>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <div key={link.to} className="relative group">
               <NavLink
                 to={link.to}
                 className={({ isActive }) =>
-                  `inline-flex px-4 py-2 text-sm tracking-wide font-medium text-white transition-transform duration-200 hover:scale-[1.04] ${
-                    isActive ? "scale-[1.04]" : ""
+                  `inline-flex px-4 py-2 text-sm tracking-wide font-medium text-ink transition-transform duration-200 hover:scale-[1.02] ${
+                    isActive ? "underline" : ""
                   }`
                 }
               >
                 {link.label}
               </NavLink>
-              {link.children && (
-                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  <div className="bg-white border border-blue-200 rounded-md shadow-xl min-w-[180px] py-2">
-                    {link.children.map((child) => (
-                      <NavLink
-                        key={child.to}
-                        to={child.to}
-                        className="block px-4 py-2 text-sm text-accent hover:text-accent-dark hover:bg-blue-50 whitespace-nowrap"
-                      >
-                        {child.label}
-                      </NavLink>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
           ))}
         </nav>
@@ -87,7 +72,7 @@ export default function Navbar() {
           >
             <Link
               to={hero.ctaPrimary.to}
-              className="group inline-flex items-center gap-0 border border-white bg-transparent text-white px-5 py-3 text-sm font-semibold tracking-wide shadow-[0_8px_30px_-8px_rgba(0,0,0,0.5)] transition-colors duration-200 hover:bg-white/10"
+              className="group inline-flex items-center gap-0 border border-[#2a7ae8] bg-[#2a7ae8] text-white px-5 py-3 text-sm font-semibold tracking-wide shadow-sm transition-colors duration-200 hover:brightness-95 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#2a7ae8]/40"
             >
               <span className="transition-all duration-300 group-hover:pr-2">
                 {hero.ctaPrimary.label}
@@ -144,7 +129,7 @@ export default function Navbar() {
               <Link
                 to={hero.ctaPrimary.to}
                 onClick={() => setOpen(false)}
-                className="mt-3 inline-flex justify-center border border-white bg-transparent text-white px-5 py-2.5 text-sm font-medium"
+                className="mt-3 inline-flex justify-center border border-[#2a7ae8] bg-[#2a7ae8] text-white px-5 py-2.5 text-sm font-medium"
               >
                 {hero.ctaPrimary.label}
               </Link>

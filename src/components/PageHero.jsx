@@ -5,7 +5,7 @@ export default function PageHero({ heading, crumb }) {
   const location = useLocation();
   const isRoot = location.pathname === "/";
   return (
-    <section className={isRoot ? "bg-ink mt-8 pt-48 pb-16" : "pt-32 pb-6"}>
+    <section className={isRoot ? "bg-ink mt-8 pt-48 pb-16" : "pt-20 pb-4"}>
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <motion.p
           initial={{ opacity: 0, y: 10 }}

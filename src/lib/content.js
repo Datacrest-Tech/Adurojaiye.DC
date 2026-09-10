@@ -7,8 +7,9 @@ export const brand = {
   tagline: "",
   // Original logo asset from adurojaiye.com. Swap for a locally hosted copy
   // in /public (see README "Using the original logo") once you've saved it.
-  logoUrl:
-    "https://adurojaiye.com/wp-content/uploads/2019/10/cropped-adc-logo-2.jpg",
+  // Use the newly added local ADC logo in `public/` for all logo locations.
+  // File: `public/adc-logo.jpg`
+  logoUrl: "/adc-logo.jpg",
   phones: ["+2348034374541", "+2348039397760"],
   email: "info@adurojaiye.com",
   address: ["27, Ajayi Aina Street,", "Ifako Gbagada, Lagos.", "Nigeria."],
@@ -33,11 +34,13 @@ export const navLinks = [
 ];
 
 export const hero = {
-  eyebrow: "Building Stronger Businesses for Tomorrow",
-  heading: "ADC helps businesses like yours to achieve long-term success.",
+  eyebrow: "CHARTERED ACCOUNTANTS & BUSINESS ADVISERS",
+  heading: "Audit, Tax and Advisory Expertise That Moves Your Business Forward",
+  supporting:
+    "For over 40 years, Ajibade Durojaiye & Co. has helped businesses strengthen financial controls, navigate compliance and make confident decisions for sustainable growth.",
   ctaPrimary: { label: "Book a Consultation", to: "/consult-us" },
-  ctaSecondary: { label: "Explore our services", to: "/services" },
-  image: "/Images/hero-background.jfif",
+  ctaSecondary: { label: "Explore Our Expertise", to: "/services" },
+  image: "/Images/new%20hero.jfif",
 };
 
 export const homeIntro = {
@@ -48,24 +51,68 @@ export const homeIntro = {
 export const services = [
   {
     slug: "financial-and-systems-audit-assurance-engagements",
-    title: "Financial and Systems Audit/Assurance engagements",
-    description: "",
+    title: "Financial and Systems Audit / Assurance Engagements",
+    description:
+      "Independent examination and evaluation of your organisation's financial records, internal control systems, and operational processes.",
+    tags: ["Audit", "Assurance", "Internal Controls"],
+    overview:
+      "Independent examination and evaluation of your organisation's financial records, internal control systems, and operational processes to ensure accuracy, regulatory compliance, and risk mitigation.",
+    offerings: [
+      "Statutory & Internal Audits: Thorough reviews in strict compliance with statutory accounting frameworks and international reporting standards.",
+      "Systems & Internal Control Reviews: Evaluating digital accounting systems and internal operational workflows to pinpoint vulnerabilities and prevent fraud.",
+      "Due Diligence & Assurance: Objective reporting that gives investors, boards, and regulatory bodies complete confidence in your reported figures.",
+    ],
+    valueDelivered:
+      "Greater transparency, minimized compliance risks, and robust financial controls that protect company assets.",
   },
   {
-    slug: "rendering-corporate-tax-planning-and-advice",
-    title: "Rendering Corporate Tax Planning and Advice",
+    slug: "corporate-tax-planning-and-advice",
+    title: "Corporate Tax Planning and Advice",
     description:
-      "We Render Corporate Tax Planning and Advice, VAT, Capital Gains Tax and Personal Income Tax Services to our clients in line with relevant statutory acts and relevant professional standards.",
+      "Proactive, compliant tax advisory designed to optimize fiscal efficiency, eliminate avoidable penalties, and navigate statutory requirements.",
+    tags: ["Tax Planning", "Compliance", "Advisory"],
+    overview:
+      "Proactive, compliant tax advisory designed to optimize fiscal efficiency, eliminate avoidable penalties, and navigate statutory requirements.",
+    offerings: [
+      "Corporate Tax & VAT Management: Strategic filing, calculation, and timely remittance of Value Added Tax and company income tax.",
+      "Capital Gains & Withholding Tax Advisory: Structuring transactions legally to optimize liabilities on asset sales and operational contracts.",
+      "Personal Income Tax & Payroll (PAYE): Seamless compliance for executive compensation, director taxes, and workforce payroll deductions.",
+      "Tax Audit & Representation: Direct liaison with federal and state revenue authorities during audits, routine inspections, or disputed assessments.",
+    ],
+    valueDelivered:
+      "Maximum tax efficiency, total statutory compliance, and zero exposure to regulatory penalties.",
   },
   {
     slug: "financial-training-services",
     title: "Financial Training Services",
-    description: "",
+    description:
+      "Capacity-building programs tailored for management teams, finance departments, and non-finance executives to strengthen business literacy.",
+    tags: ["Training", "Financial Literacy", "Capacity Building"],
+    overview:
+      "Capacity-building programs tailored for management teams, finance departments, and non-finance executives to strengthen business literacy and institutional decision-making.",
+    offerings: [
+      "Finance for Non-Finance Managers: Practical training that decodes balance sheets, cash flow dynamics, and budgeting tools for operational leaders.",
+      "Statutory Compliance & Reporting Workshops: Up-to-date modules covering changes in tax laws, accounting standards, and regulatory mandates.",
+      "Corporate Governance & Internal Control: Hands-on guidance for teams on expense management, risk monitoring, and audit-readiness.",
+    ],
+    valueDelivered:
+      "Financially literate leadership, elevated team productivity, and better internal accountability across departments.",
   },
   {
-    slug: "providing-business-advisory-services",
-    title: "Providing Business Advisory Services",
-    description: "",
+    slug: "business-advisory-services",
+    title: "Business Advisory Services",
+    description:
+      "Strategic and operational guidance to help growing enterprises diagnose performance bottlenecks and improve long-term profitability.",
+    tags: ["Strategy", "Business Advisory", "Financial Management"],
+    overview:
+      "Strategic and operational guidance to help growing enterprises diagnose performance bottlenecks, seize expansion opportunities, and improve long-term profitability.",
+    offerings: [
+      "Financial Restructuring & Management: Cash flow optimization, working capital analysis, and cost-reduction strategies.",
+      "Growth & Strategy Consulting: Feasibility assessments, business valuations, and performance benchmarking for market expansion.",
+      "Capital & Investment Planning: Advisory on securing debt or equity financing, structuring bank facilities, and capital allocation.",
+    ],
+    valueDelivered:
+      "Data-backed strategic direction, enhanced liquidity, and sustainable enterprise growth.",
   },
 ];
 
@@ -122,16 +169,16 @@ export const coreValues = [
 
 export const leadership = [
   {
-    slug: "joseph-ademola-ajibade",
-    name: "PASTOR JOSEPH ADEMOLA A. AJIBADE (DUROJAIYE)",
+    slug: "joseph-ademola-ajobade",
+    name: "MR. JOSEPH ADEMOLA A. AJOBADE (DUROJAIYE)",
     credentials: "Bsc (Hons), FCA",
-    bio: "Ademola presently is the senior partner, providing vision and capacity building for the workforce so as to ensure maximum product and service delivery.",
+    bio: "Ademola presently is the senior partner, providing vision and capacity building for the workforce to ensure maximum product and service delivery. He holds a Bachelor of Science Degree (Hons.) in Accountancy from University of Ife (now Obafemi Awolowo University) and is a Fellow of the Institute of Chartered Accountants of Nigeria (ICAN). He trained with Ajibade Durojaiye & Co., Balogun, Ayanfalu Bidejo & Co. (now BDO) and later with Ernst & Young. Ademola also worked in the banking industry as pioneer staff of Commerce Bank and Guaranty Trust Bank and served as Chief Executive of Continental Finance Ltd (Bureau de Change).",
   },
   {
     slug: "kehinde-olajide-durojaiye",
-    name: "MR KEHINDE OLAJIDE DUROJAIYE",
-    credentials: "B.A. (Hons). ACA, CISA, ACTI",
-    bio: "Kehinde is the Managing Partner overseeing the daily operations of the form including: Finance, Administration and Client Management.",
+    name: "MR. KEHINDE OLAJIDE DUROJAIYE",
+    credentials: "B.A. (Hons), ACA, CISA, ACTI",
+    bio: "Kehinde is the Managing Partner overseeing daily operations including finance, administration and client management. He is a Chartered Accountant and Associate of The Chartered Institute of Taxation of Nigeria (ACTI), and a graduate of the University of Lagos. He trained with Ajibade Durojaiye & Co. and Akintola Williams Deloitte & Touche, and has extensive experience in assurance (audit), information systems audit, tax and consulting across telecoms and financial services clients. He has acted as financial consultant to several international banks and is a member of ISACA.",
   },
 ];
 
@@ -140,31 +187,37 @@ export const team = [
     slug: "joy-olatundun-ajibade",
     name: "MRS. JOY OLATUNDUN AJIBADE",
     credentials: "B.Sc. (Hons). FCA",
-    bio: "Olatunde oversees Quality Assurance and Operational Standards to ensure best practice methods are maintained all through the firm.",
+    bio: "Olatunde oversees Quality Assurance and Operational Standards to ensure best practice methods are maintained throughout the firm. She holds a B.Sc. (Hons) in Agriculture from University of Ife and is a Fellow of the Institute of Chartered Accountants, with over three decades of experience across external audit, systems development, internal audit and financial services, including roles as Chief Financial Officer in private and insurance sectors.",
   },
   {
     slug: "bola-durojaiye",
     name: "MRS. BOLA DUROJAIYE",
     credentials: "Bsc. (Hons), MBA, FCCA",
-    bio: "Bola oversees Business Strategy, Funds Management and Foreign Relations aspects of the firm. She is a Fellow of the Association of Certified Chartered Accountants, Uk and also holds a Masters Degree from Manchester Business School.",
+    bio: "Bola oversees business strategy, funds management and foreign relations. She is a Fellow of the Association of Chartered Certified Accountants (FCCA) and holds an MBA from Manchester Business School. With over fourteen years of professional experience in financial services, she led operations management and consultancy engagements at Standard Chartered Bank covering trade services, cash management, securities services and global markets across Africa, Europe and Asia.",
+  },
+  {
+    slug: "john-fiagbey",
+    name: "MR JOHN FIAGBEY",
+    credentials: "B.Sc (Hons)",
+    bio: "John is the Head of Audit/Assurance and Taxation Services. He holds a B.Sc. (Hons) in Accounting and is a member of the Chartered Institute of Accountants (Ghana). He trained with Olaniyi Akinwunmiju & Co. before joining Ajibade Durojaiye & Co., and has over twenty five years of experience delivering audit and assurance services across private and public sectors.",
   },
   {
     slug: "michael-adelugba",
-    name: "MR. MICHAEL O. ADELUGBA",
+    name: "MR. MICHEAL O. ADELUGBA",
     credentials: "ACA, ACTI",
-    bio: "Michael is a Chartered Accountant and an Associate of the Chartered Institute of Taxation of Nigeria (ACTI) with many years of relevant Tax Management and Planning, Accounting and Assurance/Audit experience.",
+    bio: "Micheal is a Chartered Accountant and Associate of the Chartered Institute of Taxation of Nigeria (ACTI) with many years of experience in tax management, planning, accounting and assurance. He is experienced in handling and resolving tax matters for clients to achieve favourable results. He graduated in Accounting from Olabisi Onabanjo University, Ogun State.",
   },
   {
     slug: "dauda-adebesin",
     name: "MR DAUDA ADEBESIN",
     credentials: "ACA ACTI",
-    bio: "Dauda is an Associate of the Institute of Chartered Accountants of Nigeria (ICAN) and Associate of The Chartered Institute of Taxation of Nigeria (ACTI) with many years of relevant Tax Management and Planning, Accounting and Assurance/Audit experience.",
+    bio: "Dauda is an Associate of the Institute of Chartered Accountants of Nigeria (ICAN) and of The Chartered Institute of Taxation of Nigeria (ACTI). A University of Lagos accounting graduate trained at Ajibade Durojaiye & Co., he brings many years of tax management, planning, accounting and assurance experience and strong problem-solving capabilities on audit engagements.",
   },
   {
     slug: "monsurat-quadri",
     name: "MRS. MONSURAT QUADRI",
     credentials: "ACA, ACTI",
-    bio: "Monsurat is a Chartered Accountant and Associate of the Chartered Institute of Taxation of Nigeria (ACTI) with several years of relevant experience in Tax Management and Planning, Accounting and Assurance/Audit. Graduate of Accounting from the University of Ilorin and a member of the Nigerian Institute of Management.",
+    bio: "Monsurat is a Chartered Accountant and Associate of the Chartered Institute of Taxation of Nigeria (ACTI) with several years of experience in tax management and planning, accounting and assurance/audit. She graduated in Accounting from the University of Ilorin, trained with HaffixEdu & Co., and is a member of the Nigerian Institute of Management.",
   },
 ];
 
