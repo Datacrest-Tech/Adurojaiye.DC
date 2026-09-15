@@ -4,7 +4,7 @@ import { brand, navLinks } from "../lib/content";
 const socials = [
   {
     label: "Facebook",
-    href: "#",
+    href: "/contact-us",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -17,7 +17,7 @@ const socials = [
   },
   {
     label: "Twitter",
-    href: "#",
+    href: "/contact-us",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -30,7 +30,7 @@ const socials = [
   },
   {
     label: "LinkedIn",
-    href: "#",
+    href: "/contact-us",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -126,15 +126,13 @@ export default function Footer() {
           <ul className="flex gap-3">
             {socials.map((social) => (
               <li key={social.label}>
-                <a
-                  href={social.href}
+                <Link
+                  to={social.href}
                   aria-label={social.label}
-                  target="_blank"
-                  rel="noreferrer"
                   className="flex h-9 w-9 items-center justify-center rounded-full border border-accent/30 text-accent transition-colors hover:bg-accent hover:text-ink"
                 >
                   {social.icon}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

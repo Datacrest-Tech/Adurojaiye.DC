@@ -1,12 +1,14 @@
-import { Router } from "express";
-import { getTransporter } from "../utils/mailer.js";
-import { escapeHtml } from "../utils/escapeHtml.js";
-
-const router = Router();
+import { getTransporter } from "../server/utils/mailer.js";
+import { escapeHtml } from "../server/utils/escapeHtml.js";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-router.post("/consult", async (req, res) => {
+export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    res.setHeader("Allow", "POST");
+    return res.status(405).json({ error: "Method not allowed." });
+  }
+
   try {
     const {
       name,
@@ -39,12 +41,11 @@ router.post("/consult", async (req, res) => {
     const interestList = Array.isArray(interests)
       ? interests
       : [interests].filter(Boolean);
-
     const transporter = getTransporter();
     const recipient = process.env.MAIL_TO || process.env.SMTP_USER;
 
     await transporter.sendMail({
-      from: process.env.MAIL_FROM,
+      from: process.env.MAIL_FROM || process.env.SMTP_USER,
       to: recipient,
       replyTo: email.trim(),
       subject: `New consultation request from ${name.trim()} — Ajibade Durojaiye & Co.`,
@@ -68,8 +69,8 @@ router.post("/consult", async (req, res) => {
     });
 
     return res.status(200).json({ ok: true });
-  } catch (err) {
-    console.error("Consult form error:", err);
+  } catch (error) {
+    console.error("Consult form error:", error);
     return res
       .status(500)
       .json({
@@ -77,6 +78,4 @@ router.post("/consult", async (req, res) => {
           "Unable to submit your request right now. Please try again shortly.",
       });
   }
-});
-
-export default router;
+}
